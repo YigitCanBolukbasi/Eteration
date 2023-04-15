@@ -11,12 +11,6 @@ export const getProductsAsync = createAsyncThunk(
   }
 );
 
-const resetFilters = (state) => {
-  state.filteredItems = state.items;
-  let modelFilters = state.items.map((car) => car.model);
-  state.modelList = unique(modelFilters);
-};
-
 export const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -25,6 +19,7 @@ export const productsSlice = createSlice({
     modelList: [],
     filteredItems: [],
     isLoading: false,
+    cartItems: [],
     error: null,
   },
 
@@ -63,7 +58,9 @@ export const productsSlice = createSlice({
 
       // If neither brandFilters nor modelFilters exist, reset the filteredItems and modelList
       if (brandFilters.length === 0 && modelFilters.length === 0) {
-        resetFilters(state);
+        state.filteredItems = state.items;
+        let modelFilters = state.items.map((car) => car.model);
+        state.modelList = unique(modelFilters);
       }
     },
 
@@ -86,6 +83,12 @@ export const productsSlice = createSlice({
       state.filteredItems = state.filteredItems.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
+    },
+    handleSelectCart: (state, action) => {
+      state.cartItems = [
+        ...state.cartItems,
+        state.items.filter((cart) => cart.id === action.payload),
+      ];
     },
   },
   extraReducers: {
@@ -110,5 +113,6 @@ export const {
   sortedByPriceHighToLow,
   sortedByDateOldToNew,
   sortedByDateNewToOld,
+  handleSelectCart,
 } = productsSlice.actions;
 export default productsSlice.reducer;
