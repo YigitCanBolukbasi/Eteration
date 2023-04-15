@@ -22,7 +22,7 @@ const Content = ({ cartItems, setCartItems }) => {
   const filterItemsPerPage = (items, currentPage) => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return items.slice(startIndex, endIndex);
+    return items?.slice(startIndex, endIndex);
   };
 
   return (
@@ -38,7 +38,7 @@ const Content = ({ cartItems, setCartItems }) => {
         />
       </Grid>
       <Pagination
-        count={Math.ceil(items.length / itemsPerPage)}
+        count={Math.ceil(items?.length / itemsPerPage)}
         page={currentPage}
         onChange={handlePageChange}
         sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}

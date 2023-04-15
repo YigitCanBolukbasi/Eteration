@@ -25,12 +25,12 @@ export const productsSlice = createSlice({
 
   reducers: {
     setBrands: (state) => {
-      const carFilter = state.items.map((car) => car.brand);
+      const carFilter = state.items?.map((car) => car.brand);
       state.brandList = unique(carFilter);
     },
 
     setModels: (state) => {
-      const carFilter = state.items.map((car) => car.model);
+      const carFilter = state.items?.map((car) => car.model);
       state.modelList = unique(carFilter);
     },
 
@@ -38,20 +38,20 @@ export const productsSlice = createSlice({
       const { brandFilters, modelFilters } = action.payload;
 
       if (brandFilters.length > 0) {
-        state.filteredItems = state.items.filter((item) =>
+        state.filteredItems = state.items?.filter((item) =>
           brandFilters.includes(item.brand)
         );
-        state.modelList = unique(state.filteredItems.map((car) => car.model));
+        state.modelList = unique(state.filteredItems?.map((car) => car.model));
       }
       // If brandFilters don't exist, filter by model and update modelList
       else {
         state.filteredItems = state.items;
-        state.modelList = unique(state.items.map((car) => car.model));
+        state.modelList = unique(state.items?.map((car) => car.model));
       }
 
       // If modelFilters exist, filter by model
       if (modelFilters.length > 0) {
-        state.filteredItems = state.filteredItems.filter((item) =>
+        state.filteredItems = state.filteredItems?.filter((item) =>
           modelFilters.includes(item.model)
         );
       }
@@ -59,36 +59,39 @@ export const productsSlice = createSlice({
       // If neither brandFilters nor modelFilters exist, reset the filteredItems and modelList
       if (brandFilters.length === 0 && modelFilters.length === 0) {
         state.filteredItems = state.items;
-        let modelFilters = state.items.map((car) => car.model);
+        let modelFilters = state.items?.map((car) => car.model);
         state.modelList = unique(modelFilters);
       }
     },
 
     sortedByPriceLowToHigh: (state, action) => {
-      state.filteredItems = state.filteredItems.sort(
+      state.filteredItems = state.filteredItems?.sort(
         (a, b) => parseFloat(a.price) - parseFloat(b.price)
       );
     },
     sortedByPriceHighToLow: (state, action) => {
-      state.filteredItems = state.filteredItems.sort(
+      state.filteredItems = state.filteredItems?.sort(
         (a, b) => parseFloat(b.price) - parseFloat(a.price)
       );
     },
     sortedByDateOldToNew: (state, action) => {
-      state.filteredItems = state.filteredItems.sort(
+      state.filteredItems = state.filteredItems?.sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
     },
     sortedByDateNewToOld: (state, action) => {
-      state.filteredItems = state.filteredItems.sort(
+      state.filteredItems = state.filteredItems?.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     },
-    handleSelectCart: (state, action) => {
-      state.cartItems = [
-        ...state.cartItems,
-        state.items.filter((cart) => cart.id === action.payload),
-      ];
+    handleSearch: (state, action) => {
+      if (action.payload !== "") {
+        state.filteredItems = state.items?.filter((car) =>
+          car.name.toLowerCase().includes(action.payload.toLowerCase())
+        );
+      } else {
+        state.filteredItems = state.items;
+      }
     },
   },
   extraReducers: {
@@ -113,6 +116,6 @@ export const {
   sortedByPriceHighToLow,
   sortedByDateOldToNew,
   sortedByDateNewToOld,
-  handleSelectCart,
+  handleSearch,
 } = productsSlice.actions;
 export default productsSlice.reducer;

@@ -16,9 +16,7 @@ const CartBar = ({ cartItems, setCartItems }) => {
 
   return (
     <Grid container spacing={2} direction="column" p={5}>
-      <Typography>Cart</Typography>
       <Grid item>
-        <Typography variant="p">sort by</Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           {cartItems?.map((cart) => {
             return (

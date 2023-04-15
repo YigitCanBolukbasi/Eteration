@@ -21,7 +21,7 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
   };
   return (
     <>
-      {products.map((product) => {
+      {products?.map((product) => {
         const cartItem = cartItems.find((item) => {
           return item.id === product.id;
         });
@@ -37,6 +37,9 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {product?.price}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {product?.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {moment(product?.createdAt).format("DD/MM/YYYY")}

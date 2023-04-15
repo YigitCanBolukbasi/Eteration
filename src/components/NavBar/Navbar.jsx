@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -11,8 +11,19 @@ import {
 import { Search, Menu } from "@mui/icons-material";
 import Person3Icon from "@mui/icons-material/Person3";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector, useDispatch } from "react-redux";
+import { handleSearch } from "../../redux/products/productsSlice";
 
 const Appbar = () => {
+  const [valueSearch, setValueSearch] = useState();
+  const dispatch = useDispatch();
+
+  const handleOnChangeSearch = (e) => {
+    setValueSearch(e.target.value);
+    dispatch(handleSearch(e.target.value));
+    console.log("search", valueSearch);
+  };
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -24,17 +35,20 @@ const Appbar = () => {
           sx={{ flexGrow: 1 }}
         >
           <Box>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" sx={{ flexGrow: 1 }}>
               Eteration
             </Typography>
           </Box>
           <Box>
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack direction="row" alignItems="center" spacing={1}>
               <TextField
+                value={valueSearch}
+                onChange={handleOnChangeSearch}
                 id="outlined-basic"
                 label="Search"
-                variant="outlined"
+                fullWidth
                 size="small"
+                variant="outlined"
                 sx={{ backgroundColor: "white" }}
               />
               <IconButton color="inherit" aria-label="search">
@@ -43,7 +57,7 @@ const Appbar = () => {
             </Stack>
           </Box>
           <Box display="flex" alignItems="center">
-            <Box sx={{ mr: 3 }}>
+            <Box sx={{ mr: 3 }} display="flex" alignItems="center">
               <ShoppingCartIcon />
               117000
             </Box>
