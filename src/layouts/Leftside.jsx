@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Paper, Typography, TextField } from "@mui/material";
 import RadioX from "../components/RadioGroup/RadioX";
 import CheckBoX from "../components/CheckBox/CheckBoX";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +11,30 @@ const LeftSide = () => {
   const modelData = useSelector((state) => state.products.modelList);
   const [brandFilters, setBrandFilters] = useState([]);
   const [modelFilters, setModelFilters] = useState([]);
+  const [brandSearchTerm, setBrandSearchTerm] = useState("");
+  const [modelSearchTerm, setModelSearchTerm] = useState("");
 
   useEffect(() => {
     dispatch(
       filterItems({ brandFilters: brandFilters, modelFilters: modelFilters })
     );
   }, [brandFilters, modelFilters]);
+
+  const handleBrandSearch = (event) => {
+    setBrandSearchTerm(event.target.value);
+  };
+
+  const handleModelSearch = (event) => {
+    setModelSearchTerm(event.target.value);
+  };
+
+  const filteredBrandData = brandsData.filter((brand) =>
+    brand.toLowerCase().includes(brandSearchTerm.toLowerCase())
+  );
+
+  const filteredModelData = modelData.filter((model) =>
+    model.toLowerCase().includes(modelSearchTerm.toLowerCase())
+  );
 
   return (
     <Grid container spacing={2} direction="column" p={5}>
@@ -30,7 +48,9 @@ const LeftSide = () => {
         <Typography variant="p">sort by</Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           <CheckBoX
-            checkBoxData={brandsData}
+            valueSearch={brandSearchTerm}
+            onChangeSearch={handleBrandSearch}
+            checkBoxData={filteredBrandData}
             handleOnChange={(checked, brand) => {
               if (checked) {
                 setBrandFilters([...brandFilters, brand]);
@@ -47,7 +67,9 @@ const LeftSide = () => {
         <Typography variant="p">sort by</Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           <CheckBoX
-            checkBoxData={modelData}
+            valueSearch={modelSearchTerm}
+            onChangeSearch={handleModelSearch}
+            checkBoxData={filteredModelData}
             handleOnChange={(checked, brand) => {
               if (checked) {
                 setModelFilters([...modelFilters, brand]);

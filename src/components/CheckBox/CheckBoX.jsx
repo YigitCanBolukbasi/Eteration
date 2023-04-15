@@ -1,11 +1,21 @@
 import React from "react";
-import { Stack, FormControlLabel, Typography, Checkbox } from "@mui/material";
+import { Stack, FormControlLabel, Checkbox, TextField } from "@mui/material";
 
-function CheckBoX({ checkBoxData, handleOnChange }) {
+function CheckBoX({
+  checkBoxData,
+  handleOnChange,
+  valueSearch,
+  onChangeSearch,
+}) {
   return (
     <div>
       <Stack direction="column">
-        <Typography>Search</Typography>
+        <TextField
+          id="brand-search"
+          label="Search"
+          value={valueSearch}
+          onChange={onChangeSearch}
+        />
         {checkBoxData?.map((brand) => (
           <FormControlLabel
             control={
