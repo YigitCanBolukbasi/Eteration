@@ -9,8 +9,14 @@ import Typography from "@mui/material/Typography";
 import moment from "moment";
 import { toast } from "react-toastify";
 import Counter from "../Buttons/Counter";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  handleDetail,
+  handleOpenDetail,
+} from "../../redux/products/productsSlice";
 
 const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
+  const dispatch = useDispatch();
   const cartItemIds = cartItems?.map((item) => {
     return item.id;
   });
@@ -19,6 +25,12 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
     onAddCardClick(product);
     toast("You have successfully added a car to your cart.");
   };
+
+  const handleSendToDetail = (product) => {
+    dispatch(handleDetail(product));
+    dispatch(handleOpenDetail());
+  };
+
   return (
     <>
       {products?.map((product) => {
@@ -29,12 +41,13 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
           <Grid item xs={3}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
+                onClick={() => handleSendToDetail(product)}
                 component="img"
                 alt={product.name}
                 height="140"
                 image={product.image}
               />
-              <CardContent>
+              <CardContent onClick={() => handleSendToDetail(product)}>
                 <Typography gutterBottom variant="h5" component="div">
                   {product?.price}
                 </Typography>

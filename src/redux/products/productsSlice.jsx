@@ -18,6 +18,8 @@ export const productsSlice = createSlice({
     brandList: [],
     modelList: [],
     filteredItems: [],
+    detailData: [],
+    detailOpen: false,
     isLoading: false,
     cartItems: [],
     error: null,
@@ -93,6 +95,15 @@ export const productsSlice = createSlice({
         state.filteredItems = state.items;
       }
     },
+    handleDetail: (state, action) => {
+      state.detailData = action.payload;
+    },
+    handleOpenDetail: (state) => {
+      state.detailOpen = true;
+    },
+    handleCloseDetail: (state) => {
+      state.detailOpen = false;
+    },
   },
   extraReducers: {
     [getProductsAsync.pending]: (state, action) => {
@@ -115,7 +126,10 @@ export const {
   sortedByPriceLowToHigh,
   sortedByPriceHighToLow,
   sortedByDateOldToNew,
+  handleDetail,
   sortedByDateNewToOld,
   handleSearch,
+  handleOpenDetail,
+  handleCloseDetail,
 } = productsSlice.actions;
 export default productsSlice.reducer;
