@@ -3,7 +3,7 @@ import { Grid, Paper, Typography } from "@mui/material";
 import RadioX from "../components/RadioGroup/RadioX";
 import CheckBoX from "../components/CheckBox/CheckBoX";
 import { useDispatch, useSelector } from "react-redux";
-import { filterItems } from "../redux/products/productsSlice";
+import { filterItems, sortedByPrice } from "../redux/products/productsSlice";
 
 const LeftSide = () => {
   const dispatch = useDispatch();

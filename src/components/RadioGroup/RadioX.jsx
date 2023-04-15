@@ -1,30 +1,50 @@
 import React from "react";
 import { RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByBrand } from "../../redux/products/productsSlice";
+import {
+  sortedByPriceLowToHigh,
+  sortedByPriceHighToLow,
+} from "../../redux/products/productsSlice";
 
 function RadioX() {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.products.items);
 
   const RadioXData = [
     {
-      name: "option 1",
-      label: "option 1",
+      name: "oldToNew",
+      label: "Old To New",
     },
     {
-      name: "option 2",
-      label: "option 2",
+      name: "newToOld",
+      label: "New To Old",
     },
     {
-      name: "option 3",
-      label: "option 3",
+      name: "priceHighToLow",
+      label: "Price High To Low",
     },
     {
-      name: "option 4",
-      label: "option 4",
+      name: "priceLowToHigh",
+      label: "Price Low To High",
     },
   ];
+
+  const handleOnChange = (e) => {
+    switch (e.target?.value) {
+      case "priceLowToHigh":
+        dispatch(sortedByPriceLowToHigh());
+        break;
+      case "priceHighToLow":
+        dispatch(sortedByPriceHighToLow());
+        break;
+      default:
+        console.log("empty");
+        break;
+    }
+    if (e.target.value === "priceLowToHigh") {
+      dispatch(sortedByPriceLowToHigh());
+    }
+  };
+
   return (
     <div>
       <RadioGroup>
@@ -33,9 +53,7 @@ function RadioX() {
             value={x.name}
             control={<Radio />}
             label={x.label}
-            onChange={(e) => {
-              console.log("a", e.target.value);
-            }}
+            onChange={(e) => handleOnChange(e)}
           />
         ))}
       </RadioGroup>

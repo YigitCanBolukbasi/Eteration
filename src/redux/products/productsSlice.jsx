@@ -66,6 +66,17 @@ export const productsSlice = createSlice({
         resetFilters(state);
       }
     },
+
+    sortedByPriceLowToHigh: (state, action) => {
+      state.filteredItems = state.filteredItems.sort(
+        (a, b) => parseFloat(a.price) - parseFloat(b.price)
+      );
+    },
+    sortedByPriceHighToLow: (state, action) => {
+      state.filteredItems = state.filteredItems.sort(
+        (a, b) => parseFloat(b.price) - parseFloat(a.price)
+      );
+    },
   },
   extraReducers: {
     [getProductsAsync.pending]: (state, action) => {
@@ -83,5 +94,6 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const { filterItems } = productsSlice.actions;
+export const { filterItems, sortedByPriceLowToHigh, sortedByPriceHighToLow } =
+  productsSlice.actions;
 export default productsSlice.reducer;
