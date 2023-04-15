@@ -30,7 +30,6 @@ const CartBar = ({ cartItems, setCartItems }) => {
         </Paper>
       </Grid>
       <Grid item>
-        <Typography variant="p">sort by</Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           <Typography>Total price: {total}</Typography>
           <Button variant="contained">Check Out</Button>

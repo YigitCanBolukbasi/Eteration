@@ -10,7 +10,6 @@ import {
 
 function RadioX() {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.products.filteredItems);
 
   const RadioXData = [
     {

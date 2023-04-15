@@ -39,13 +39,17 @@ const FilterNavbar = () => {
   return (
     <Grid container spacing={2} direction="column" p={5}>
       <Grid item>
-        <Typography variant="p">sort by</Typography>
+        <Typography variant="body2" color="text.secondary">
+          sort by
+        </Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           <RadioX />
         </Paper>
       </Grid>
       <Grid item>
-        <Typography variant="p">sort by</Typography>
+        <Typography variant="body2" color="text.secondary">
+          Brands
+        </Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           <CheckBoX
             valueSearch={brandSearchTerm}
@@ -64,7 +68,9 @@ const FilterNavbar = () => {
         </Paper>
       </Grid>
       <Grid item>
-        <Typography variant="p">sort by</Typography>
+        <Typography variant="body2" color="text.secondary">
+          Model
+        </Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
           <CheckBoX
             valueSearch={modelSearchTerm}
