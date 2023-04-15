@@ -26,16 +26,19 @@ const Appbar = () => {
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               Eteration
             </Typography>
-            <Box>
-              <TextField
-                id="outlined-basic"
-                label="Search"
-                variant="outlined"
-                size="small"
-              />
-              <IconButton color="inherit" aria-label="search">
-                <Search />
-              </IconButton>
+            <Box sx={{ flexGrow: 1 }}>
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <TextField
+                  id="outlined-basic"
+                  label="Search"
+                  variant="outlined"
+                  size="small"
+                  sx={{ backgroundColor: "white" }}
+                />
+                <IconButton color="inherit" aria-label="search">
+                  <Search />
+                </IconButton>
+              </Stack>
             </Box>
           </Stack>
           <Box display="flex" alignItems="center">

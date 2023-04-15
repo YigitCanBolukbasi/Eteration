@@ -4,13 +4,13 @@ import CheckBoX from "../components/CheckBox/CheckBoX";
 import Counter from "../components/Buttons/Counter";
 import { useSelector, useDispatch } from "react-redux";
 
-const RightSide = ({ cartItems, setCartItems }) => {
-  var toplam = 0;
+const CartBar = ({ cartItems, setCartItems }) => {
+  var total = 0;
   for (var i = 0; i < cartItems.length; i++) {
     var price = Number(cartItems[i].price);
     var quantity = Number(cartItems[i].quantity);
     if (!isNaN(price) && !isNaN(quantity)) {
-      toplam += price * quantity;
+      total += price * quantity;
     }
   }
 
@@ -34,7 +34,7 @@ const RightSide = ({ cartItems, setCartItems }) => {
       <Grid item>
         <Typography variant="p">sort by</Typography>
         <Paper elevation={3} style={{ padding: "16px" }}>
-          <Typography>Total price: {toplam}</Typography>
+          <Typography>Total price: {total}</Typography>
           <Button variant="contained">Check Out</Button>
         </Paper>
       </Grid>
@@ -42,4 +42,4 @@ const RightSide = ({ cartItems, setCartItems }) => {
   );
 };
 
-export default RightSide;
+export default CartBar;

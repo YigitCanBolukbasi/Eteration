@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CardX from "../components/Card/CardX";
+import CarCards from "../components/CarCards/CarCards";
 import { Box, Grid, Pagination } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsAsync } from "../redux/products/productsSlice";
 
-function MiddleBody({ cartItems, setCartItems }) {
+const Content = ({ cartItems, setCartItems }) => {
   const dispatch = useDispatch();
   const itemsPerPage = 12; // Her sayfada gösterilecek ürün sayısı
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +28,7 @@ function MiddleBody({ cartItems, setCartItems }) {
   return (
     <Box sx={{ width: "100%" }}>
       <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <CardX
+        <CarCards
           products={filterItemsPerPage(items, currentPage)}
           cartItems={cartItems}
           setCartItems={setCartItems}
@@ -45,6 +45,6 @@ function MiddleBody({ cartItems, setCartItems }) {
       />
     </Box>
   );
-}
+};
 
-export default MiddleBody;
+export default Content;

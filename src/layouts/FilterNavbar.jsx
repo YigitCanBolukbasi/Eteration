@@ -5,7 +5,7 @@ import CheckBoX from "../components/CheckBox/CheckBoX";
 import { useDispatch, useSelector } from "react-redux";
 import { filterItems, sortedByPrice } from "../redux/products/productsSlice";
 
-const LeftSide = () => {
+const FilterNavbar = () => {
   const dispatch = useDispatch();
   const brandsData = useSelector((state) => state.products.brandList);
   const modelData = useSelector((state) => state.products.modelList);
@@ -86,4 +86,4 @@ const LeftSide = () => {
   );
 };
 
-export default LeftSide;
+export default FilterNavbar;

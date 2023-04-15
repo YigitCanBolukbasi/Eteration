@@ -7,14 +7,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
-import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Counter from "../Buttons/Counter";
 
-const CardX = ({ products, cartItems, setCartItems, onAddCardClick }) => {
-  const dispatch = useDispatch();
-  const items = useSelector((state) => state.products.cartItems);
-
+const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
   const cartItemIds = cartItems?.map((item) => {
     return item.id;
   });
@@ -82,4 +78,4 @@ const CardX = ({ products, cartItems, setCartItems, onAddCardClick }) => {
   );
 };
 
-export default CardX;
+export default CarCards;
