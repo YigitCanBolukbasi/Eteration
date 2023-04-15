@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   sortedByPriceLowToHigh,
   sortedByPriceHighToLow,
+  sortedByDateOldToNew,
+  sortedByDateNewToOld,
 } from "../../redux/products/productsSlice";
 
 function RadioX() {
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.products.filteredItems);
 
   const RadioXData = [
     {
@@ -35,6 +38,12 @@ function RadioX() {
         break;
       case "priceHighToLow":
         dispatch(sortedByPriceHighToLow());
+        break;
+      case "oldToNew":
+        dispatch(sortedByDateOldToNew());
+        break;
+      case "newToOld":
+        dispatch(sortedByDateNewToOld());
         break;
       default:
         console.log("empty");

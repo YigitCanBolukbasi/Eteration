@@ -77,6 +77,16 @@ export const productsSlice = createSlice({
         (a, b) => parseFloat(b.price) - parseFloat(a.price)
       );
     },
+    sortedByDateOldToNew: (state, action) => {
+      state.filteredItems = state.filteredItems.sort(
+        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      );
+    },
+    sortedByDateNewToOld: (state, action) => {
+      state.filteredItems = state.filteredItems.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+    },
   },
   extraReducers: {
     [getProductsAsync.pending]: (state, action) => {
@@ -94,6 +104,11 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const { filterItems, sortedByPriceLowToHigh, sortedByPriceHighToLow } =
-  productsSlice.actions;
+export const {
+  filterItems,
+  sortedByPriceLowToHigh,
+  sortedByPriceHighToLow,
+  sortedByDateOldToNew,
+  sortedByDateNewToOld,
+} = productsSlice.actions;
 export default productsSlice.reducer;

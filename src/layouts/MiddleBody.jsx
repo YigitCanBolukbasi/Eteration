@@ -9,19 +9,6 @@ function MiddleBody() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.products.filteredItems);
 
-  const datesConvert = items.map((date) =>
-    moment(date?.createdAt).format("DD/MM/YYYY")
-  );
-  const compareDates = (a, b) => {
-    const dateA = new Date(a);
-    const dateB = new Date(b);
-    return dateA.getTime() - dateB.getTime();
-  };
-
-  const dateElements = datesConvert.sort(compareDates);
-
-  console.log("sortedDates", dateElements);
-
   useEffect(() => {
     dispatch(getProductsAsync());
   }, [dispatch]);

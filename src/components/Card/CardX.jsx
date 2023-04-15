@@ -6,28 +6,32 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import moment from "moment";
 
 const CardX = ({ products }) => {
   return (
     <>
-      {products.map((x) => (
+      {products.map((product) => (
         <Grid item xs={3}>
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               component="img"
-              alt={x.name}
+              alt={product.name}
               height="140"
-              image={x.image}
+              image={product.image}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {x?.price}
+                {product?.price}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {x?.brand}
+                {moment(product?.createdAt).format("DD/MM/YYYY")}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {x?.model}
+                {product?.brand}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {product?.model}
               </Typography>
             </CardContent>
             <CardActions>
