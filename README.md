@@ -17,8 +17,8 @@ Material UI
 Toastify
 <!-- -->
 
-## Install and run on android
-
+## Install
+$yarn install
 $yarn Start
 <!-- -->
 
