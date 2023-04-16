@@ -10,6 +10,7 @@ import DetailPage from "./DetailPage";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const [totalPrice, setTotalPrice] = useState(0);
   const detailOpen = useSelector((state) => state.products.detailOpen);
   const [cartItems, setCartItems] = useState(() => {
     var dataJson = localStorage.getItem("cartItems");
@@ -19,11 +20,12 @@ const HomePage = () => {
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    cartItems.length === 0 && setTotalPrice(0);
   }, [cartItems]);
 
   return (
     <>
-      <Navbar />
+      <Navbar totalPrice={totalPrice} />
       <Grid container paddingX={"100px"} xs={12}>
         {detailOpen ? (
           <Grid item xs={10}>
@@ -47,7 +49,12 @@ const HomePage = () => {
         )}
 
         <Grid item xs={2}>
-          <CartBar cartItems={cartItems} setCartItems={setCartItems} />
+          <CartBar
+            totalPrice={totalPrice}
+            setTotalPrice={setTotalPrice}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
         </Grid>
       </Grid>
       <ToastContainer />

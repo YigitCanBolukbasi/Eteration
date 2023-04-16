@@ -14,7 +14,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector, useDispatch } from "react-redux";
 import { handleSearch } from "../../redux/products/productsSlice";
 
-const Appbar = () => {
+const Appbar = ({ totalPrice }) => {
   const [valueSearch, setValueSearch] = useState();
   const dispatch = useDispatch();
 
@@ -59,7 +59,7 @@ const Appbar = () => {
           <Box display="flex" alignItems="center">
             <Box sx={{ mr: 3 }} display="flex" alignItems="center">
               <ShoppingCartIcon />
-              117000
+              {totalPrice}
             </Box>
             <Box display="flex" alignItems="center">
               <Person3Icon sx={{ mr: 1 }} />
