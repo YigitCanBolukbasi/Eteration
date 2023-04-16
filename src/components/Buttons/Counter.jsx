@@ -24,8 +24,6 @@ function Counter({ cart, setCartItems, cartItems, hideName }) {
     cart.quantity === 1
       ? setCartItems(totalPriceZero)
       : setCartItems(newCartItems);
-
-    console.log(totalPriceZero, "delete");
   };
 
   const StyledButton = styled(Button)((props) => ({
