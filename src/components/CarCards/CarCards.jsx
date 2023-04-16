@@ -39,7 +39,7 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
         });
         return (
           <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card>
               <CardMedia
                 onClick={() => handleSendToDetail(product)}
                 component="img"
@@ -48,8 +48,14 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
                 image={product.image}
               />
               <CardContent onClick={() => handleSendToDetail(product)}>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product?.price}
+                <Typography
+                  sx={{
+                    color: "#2A59FE",
+                    fontSize: "14px",
+                    lineHeight: "17.07px",
+                  }}
+                >
+                  {product?.price} ₺
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {product?.name}

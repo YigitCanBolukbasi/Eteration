@@ -5,6 +5,7 @@ const button = (theme) => ({
         background: "#2A59FE",
         width: "100%",
         gap: "10px",
+        fontSize: "16px",
         maxHeight: "36px",
         color: "white",
         borderRadius: "4px",

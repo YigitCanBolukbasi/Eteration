@@ -5,9 +5,13 @@ import MuiChip from "./chip";
 import MuiFormLabel from "./formLabel";
 import MuiInput from "./input";
 import MuiRadio from "./Radio";
+import MuiPaper from "./paper";
+import MuiCard from "./Card";
 
 const overrides = (theme) => {
   const input = MuiInput(theme);
+  const paper = MuiPaper(theme);
+  const card = MuiCard(theme);
   const radio = MuiRadio(theme);
   const chip = MuiChip(theme);
   const button = MuiButton(theme);
@@ -21,8 +25,10 @@ const overrides = (theme) => {
     chip,
     checkbox,
     formLabel,
+    card,
     autocomplete,
-    radio
+    radio,
+    paper
   );
 };
 

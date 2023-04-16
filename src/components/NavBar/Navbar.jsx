@@ -25,7 +25,7 @@ const Appbar = ({ totalPrice }) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ background: "#2A59FE" }} position="static">
       <Toolbar>
         <Stack
           direction="row"
