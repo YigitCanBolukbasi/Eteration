@@ -5,6 +5,7 @@ import {
   IconButton,
   Typography,
   TextField,
+  styled,
   Box,
   Stack,
 } from "@mui/material";
@@ -21,8 +22,38 @@ const Appbar = ({ totalPrice }) => {
   const handleOnChangeSearch = (e) => {
     setValueSearch(e.target.value);
     dispatch(handleSearch(e.target.value));
-    console.log("search", valueSearch);
   };
+
+  const handleBlur = (event) => {
+    if (event.target.value.length === 1) {
+      event.target.focus();
+    }
+  };
+
+  const Search = styled(TextField)(({ theme }) => ({
+    width: "408px",
+    backgroundColor: "white",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
+  }));
+
+  const StyledLogo = styled(Box)(({ theme }) => ({}));
+
+  const StyledIcons = styled(Box)(({ theme }) => ({
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
+  }));
 
   return (
     <AppBar sx={{ background: "#2A59FE" }} position="static">
@@ -34,24 +65,24 @@ const Appbar = ({ totalPrice }) => {
           justifyContent="space-between"
           sx={{ flexGrow: 1 }}
         >
-          <Box>
+          <StyledLogo>
             <Typography variant="h4" sx={{ flexGrow: 1 }}>
               Eteration
             </Typography>
-          </Box>
+          </StyledLogo>
           <Box>
             <Stack direction="row" alignItems="center" spacing={1}>
-              <TextField
+              <Search
                 value={valueSearch}
                 onChange={handleOnChangeSearch}
                 id="outlined-basic"
                 label="Search"
-                sx={{ width: "408px", backgroundColor: "white" }}
                 variant="outlined"
+                onBlur={handleBlur}
               />
             </Stack>
           </Box>
-          <Box display="flex" alignItems="center">
+          <StyledIcons display="flex" alignItems="center">
             <Box sx={{ mr: 3 }} display="flex" alignItems="center">
               <ShoppingCartIcon sx={{ color: "white" }} />
               {totalPrice}
@@ -60,7 +91,7 @@ const Appbar = ({ totalPrice }) => {
               <Person3Icon sx={{ mr: 1, color: "white" }} />
               <Typography variant="subtitle1">Yiğit</Typography>
             </Box>
-          </Box>
+          </StyledIcons>
         </Stack>
       </Toolbar>
     </AppBar>
@@ -68,33 +99,3 @@ const Appbar = ({ totalPrice }) => {
 };
 
 export default Appbar;
-
-{
-  /* <Stack direction="row" alignItems="center" spacing={6}>
-
-<Box sx={{ flexGrow: 1 }}>
-  <Stack direction="row" alignItems="center" spacing={2}>
-    <TextField
-      id="outlined-basic"
-      label="Search"
-      variant="outlined"
-      size="small"
-      sx={{ backgroundColor: "white" }}
-    />
-    <IconButton color="inherit" aria-label="search">
-      <Search />
-    </IconButton>
-  </Stack>
-</Box>
-</Stack>
-<Box display="flex" alignItems="center">
-<Box sx={{ mr: 3 }}>
-  <ShoppingCartIcon />
-  117000
-</Box>
-<Box display="flex" alignItems="center">
-  <Person3Icon sx={{ mr: 1 }} />
-  <Typography variant="subtitle1">Yiğit</Typography>
-</Box>
-</Box> */
-}

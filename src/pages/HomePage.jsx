@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/NavBar/Navbar";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import CartBar from "../layouts/CartBar";
 import FilterNavbar from "../layouts/FilterNavbar";
 import Content from "../layouts/Content";
@@ -28,7 +28,7 @@ const HomePage = () => {
       <Navbar totalPrice={totalPrice} />
       <Grid container paddingX={"100px"} xs={12}>
         {detailOpen ? (
-          <Grid item xs={10}>
+          <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
             <DetailPage
               cartItems={cartItems}
               setCartItems={setCartItems}
@@ -39,16 +39,16 @@ const HomePage = () => {
           </Grid>
         ) : (
           <>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
               <FilterNavbar />
             </Grid>
-            <Grid item xs={7} paddingTop={7}>
+            <Grid item xs={12} sm={12} md={7} lg={7} xl={7} paddingTop={7}>
               <Content cartItems={cartItems} setCartItems={setCartItems} />
             </Grid>
           </>
         )}
 
-        <Grid item xs={2}>
+        <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
           <CartBar
             totalPrice={totalPrice}
             setTotalPrice={setTotalPrice}

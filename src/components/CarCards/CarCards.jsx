@@ -38,7 +38,7 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
           return item.id === product.id;
         });
         return (
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={12} md={4} lg={3} xl={3}>
             <Card>
               <CardMedia
                 onClick={() => handleSendToDetail(product)}
