@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
 
 function Counter({ cart, setCartItems, cartItems, hideName }) {
@@ -28,6 +28,11 @@ function Counter({ cart, setCartItems, cartItems, hideName }) {
     console.log(totalPriceZero, "delete");
   };
 
+  const StyledButton = styled(Button)((props) => ({
+    color: "black",
+    background: "white",
+  }));
+
   return (
     <Stack direction="row" alignItems="center">
       {!hideName && (
@@ -37,13 +42,24 @@ function Counter({ cart, setCartItems, cartItems, hideName }) {
         </Stack>
       )}
       <Stack direction="row" alignItems="center">
-        <Button variant="contained" onClick={handleContainerDown}>
+        <StyledButton variant="contained" onClick={handleContainerDown}>
           -
-        </Button>
-        <Typography>{cart.quantity}</Typography>
-        <Button variant="contained" onClick={handleContainerUp}>
+        </StyledButton>
+        <Typography
+          sx={{
+            width: "20px",
+            height: "20px",
+            background: "#2A59FE",
+            padding: "20px",
+            color: "white",
+            fontsize: "14px",
+          }}
+        >
+          {cart.quantity}
+        </Typography>
+        <StyledButton variant="contained" onClick={handleContainerUp}>
           +
-        </Button>
+        </StyledButton>
       </Stack>
     </Stack>
   );

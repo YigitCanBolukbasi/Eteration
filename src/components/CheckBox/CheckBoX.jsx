@@ -9,15 +9,24 @@ function CheckBoX({
 }) {
   return (
     <div>
-      <Stack direction="column">
-        <TextField
-          id="brand-search"
-          label="Search"
-          value={valueSearch}
-          onChange={onChangeSearch}
-        />
+      <TextField
+        id="brand-search"
+        label="Search"
+        sx={{ width: "100%" }}
+        value={valueSearch}
+        onChange={onChangeSearch}
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "200px",
+          overflow: "scroll",
+        }}
+      >
         {checkBoxData?.map((brand) => (
           <FormControlLabel
+            key={brand}
             control={
               <Checkbox
                 onChange={(e) => {
@@ -28,7 +37,7 @@ function CheckBoX({
             label={brand}
           />
         ))}
-      </Stack>
+      </div>
     </div>
   );
 }

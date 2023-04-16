@@ -50,7 +50,10 @@ const FilterNavbar = () => {
         <Typography variant="body2" color="text.secondary">
           Brands
         </Typography>
-        <Paper elevation={3} style={{ padding: "16px" }}>
+        <Paper
+          elevation={3}
+          style={{ padding: "16px", maxHeight: "300px", overflow: "scroll" }}
+        >
           <CheckBoX
             valueSearch={brandSearchTerm}
             onChangeSearch={handleBrandSearch}
@@ -71,7 +74,10 @@ const FilterNavbar = () => {
         <Typography variant="body2" color="text.secondary">
           Model
         </Typography>
-        <Paper elevation={3} style={{ padding: "16px" }}>
+        <Paper
+          elevation={3}
+          style={{ padding: "16px", maxHeight: "300px", overflow: "scroll" }}
+        >
           <CheckBoX
             valueSearch={modelSearchTerm}
             onChangeSearch={handleModelSearch}
