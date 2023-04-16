@@ -46,23 +46,18 @@ const Appbar = ({ totalPrice }) => {
                 onChange={handleOnChangeSearch}
                 id="outlined-basic"
                 label="Search"
-                fullWidth
-                size="small"
+                sx={{ width: "408px", backgroundColor: "white" }}
                 variant="outlined"
-                sx={{ backgroundColor: "white" }}
               />
-              <IconButton color="inherit" aria-label="search">
-                <Search />
-              </IconButton>
             </Stack>
           </Box>
           <Box display="flex" alignItems="center">
             <Box sx={{ mr: 3 }} display="flex" alignItems="center">
-              <ShoppingCartIcon />
+              <ShoppingCartIcon sx={{ color: "white" }} />
               {totalPrice}
             </Box>
             <Box display="flex" alignItems="center">
-              <Person3Icon sx={{ mr: 1 }} />
+              <Person3Icon sx={{ mr: 1, color: "white" }} />
               <Typography variant="subtitle1">Yiğit</Typography>
             </Box>
           </Box>
