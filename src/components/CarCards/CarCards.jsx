@@ -72,12 +72,18 @@ const CarCards = ({ products, cartItems, setCartItems, onAddCardClick }) => {
               </CardContent>
               <CardActions>
                 {cartItem ? (
-                  <Counter
-                    cart={cartItem}
-                    cartItems={cartItems}
-                    setCartItems={setCartItems}
-                    hideName
-                  />
+                  <Stack
+                    alignItems="center"
+                    justifyContent="center"
+                    sx={{ width: "100%" }}
+                  >
+                    <Counter
+                      cart={cartItem}
+                      cartItems={cartItems}
+                      setCartItems={setCartItems}
+                      hideName
+                    />
+                  </Stack>
                 ) : (
                   <Button
                     onClick={() => {

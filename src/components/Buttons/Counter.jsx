@@ -52,7 +52,10 @@ function Counter({ cart, setCartItems, cartItems, hideName }) {
             background: "#2A59FE",
             padding: "20px",
             color: "white",
-            fontsize: "14px",
+            fontSize: "14px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {cart.quantity}

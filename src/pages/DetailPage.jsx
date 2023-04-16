@@ -1,4 +1,11 @@
-import { Button, Grid, IconButton, Paper, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React, { useEffect } from "react";
 import CardMedia from "@mui/material/CardMedia";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,23 +42,44 @@ function DetailPage({ cartItems, setCartItems, onAddCardClick }) {
             <CardMedia
               component="img"
               alt={product?.name}
-              height="140"
               image={product?.image}
             />
           </Grid>
-          <Grid item xs={6}>
-            <Typography>{product?.name}</Typography>
-            <Typography>{product?.price}</Typography>
+          <Grid item xs={6} padding={5}>
+            <Typography
+              sx={{
+                fontSize: "24px",
+                lineHeight: "29.26px",
+                fontWeight: "400",
+              }}
+            >
+              {product?.name}
+            </Typography>
+            <Typography
+              sx={{
+                color: "#2A59FE",
+                fontSize: "24px",
+                lineHeight: "29.26px",
+                fontWeight: "400",
+                marginBottom: "5%",
+              }}
+            >
+              {product?.price} ₺
+            </Typography>
 
             {cartItem ? (
-              <Counter
-                cart={cartItem}
-                cartItems={cartItems}
-                setCartItems={setCartItems}
-                hideName
-              />
+              <Stack alignItems="center" justifyContent="center">
+                <Counter
+                  sx={{ marginBottom: "5%" }}
+                  cart={cartItem}
+                  cartItems={cartItems}
+                  setCartItems={setCartItems}
+                  hideName
+                />
+              </Stack>
             ) : (
               <Button
+                sx={{ marginBottom: "5%" }}
                 onClick={() => {
                   handleOnClick(product);
                 }}
